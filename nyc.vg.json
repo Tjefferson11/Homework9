@@ -1,0 +1,33 @@
+{
+    "$schema" : "https://vega.github.io/schema/vega-lite/v5.json",
+    "width" : 500,
+    "height" : 500, 
+    "title" : "New York City Airbnb Listings",
+    "projection" : {"type": "mercator"}, 
+    "layer": [
+        {"data" : {
+            "url" : "https://raw.githubusercontent.com/Tjefferson11/3179-Tjfferson11/main/2010%20Neighborhood%20Tabulation%20Areas%20(NTAs).json",
+            "format" : {"type" : "topojson", "feature": "2010 Neighborhood Tabulation Areas (NTAs)"}
+        },
+        "mark": {"type": "geoshape", "fill": "darkgray", "stroke": "whitesmoke"}
+        },{
+        "data": {
+            "url" : "https://raw.githubusercontent.com/Tjefferson11/3179-Tjfferson11/main/NYC_AIRBNB_DATASET.csv"
+          },
+          "mark": {"type": "circle", "tooltip": {"content": "data"}},
+          "encoding": {
+            "longitude": {"field": "longitude", "type": "quantitative" },
+            "latitude": {"field": "latitude", "type": "quantitative"},
+        "color": {
+          "field": "Listings",
+          "type": "quantitative",
+          "scale": {"scheme": "reds"}
+        }
+            }
+        }
+    
+
+
+    ]
+
+}
